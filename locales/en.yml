@@ -12,8 +12,9 @@ en:
     snapblocks_discourse:
       snapblocks_spoiler: "snapblocks"
   js:
+    composer:
+      snapblocks_text: snapblocks text
+  composer:
     snapblocks_discourse:
       title: Snapblocks
       label: Display snap blocks with text.
-    composer:
-      snapblocks_text: snapblocks text

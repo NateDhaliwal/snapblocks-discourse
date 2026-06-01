@@ -5,9 +5,9 @@ import {
 } from "discourse/lib/to-markdown";
 import snapblocks from "../lib/snapblocks/snapblocks-es.js";
 import loadTranslations from "../lib/snapblocks/translations-all-es.js";
+import I18n from "discourse-i18n";
 
 function applySnapblocks(element, settings) {
-  console.log(settings);
   async function renderElement(el) {
     let style = el.getAttribute("blockStyle") || settings.block_style;
     snapblocks.renderElement(el, {
@@ -50,7 +50,7 @@ function initializeSnapblocks(api, settings) {
       );
     },
     icon: "code",
-    label: themePrefix("snapblocks_discourse.title"),
+    label: themePrefix("composer.snapblocks_discourse.title"),
   });
 
   addTagDecorateCallback(function () {
@@ -116,7 +116,11 @@ export default {
   name: "apply-snapblocks",
   initialize(container) {
     // console.debug(`snapblocks version: ${snapblocks.version}`);
-
+    const currentLocale = I18n.currentLocale();
+    if (!I18n.translations[currentLocale].js.composer) {
+      I18n.translations[currentLocale].js.composer = {};
+    }
+    I18n.translations[currentLocale].js.composer.snapblocks_text = I18n.t(themePrefix("composer.snapblocks_text"));
     loadTranslations(snapblocks);
     withPluginApi("1.15.0", (api) => {
       return initializeSnapblocks(api, settings);
