@@ -3,8 +3,8 @@ import {
   addBlockDecorateCallback,
   addTagDecorateCallback,
 } from "discourse/lib/to-markdown";
-import snapblocks from "../../lib/snapblocks/snapblocks-es.js";
-import loadTranslations from "../../lib/snapblocks/translations-all-es.js";
+import snapblocks from "../lib/snapblocks/snapblocks-es.js";
+import loadTranslations from "../lib/snapblocks/translations-all-es.js";
 
 function applySnapblocks(element, settings) {
   console.log(settings);
