@@ -7,6 +7,7 @@ import snapblocks from "../../lib/snapblocks/snapblocks-es.js";
 import loadTranslations from "../../lib/snapblocks/translations-all-es.js";
 
 function applySnapblocks(element, settings) {
+  console.log(settings);
   async function renderElement(el) {
     let style = el.getAttribute("blockStyle") || settings.block_style;
     snapblocks.renderElement(el, {
@@ -49,7 +50,7 @@ function initializeSnapblocks(api, settings) {
       );
     },
     icon: "code",
-    label: "snapblocks_discourse.title",
+    label: themePrefix("snapblocks_discourse.title"),
   });
 
   addTagDecorateCallback(function () {
