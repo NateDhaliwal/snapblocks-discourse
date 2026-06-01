@@ -1,0 +1,30 @@
+block_style:
+  client: true
+  default: "snap"
+  type: enum
+  choices:
+    - snap
+    - snap-flat
+    - scratch2
+    - scratch3
+    - scratch3-hc
+block_scale:
+  client: true
+  type: float
+  default: 1
+  min: 0.1
+zebra_coloring:
+  client: true
+  default: true
+block_wrap:
+  client: true
+  default: true
+show_spaces:
+  client: true
+  default: true
+santa_hats:
+  client: true
+  default: false
+scratchblocks_alias:
+  client: true
+  default: true

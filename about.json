@@ -1,0 +1,9 @@
+{
+  "name": "snapblocks-discourse",
+  "component": true,
+  "authors": "ego-lay-atman-bay",
+  "about_url": "https://meta.discourse.org/t/-/310155",
+  "license_url": "TODO: Put your theme's LICENSE URL here",
+  "learn_more": "https://meta.discourse.org/t/-/310155",
+  "theme_version": "1.5.0",
+}

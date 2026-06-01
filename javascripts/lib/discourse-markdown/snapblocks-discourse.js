@@ -57,9 +57,9 @@ export function setup(helper) {
 
   let registerScratchblocks;
 
-  helper.registerOptions((opts, siteSettings) => {
-    opts.features["snapblocks"] = !!siteSettings.snapblocks_enabled;
-    registerScratchblocks = !!siteSettings.scratchblocks_alias;
+  helper.registerOptions((opts, /* siteSettings */) => {
+    opts.features["snapblocks"] = true; // !!(siteSettings.snapblocks_enabled)
+    registerScratchblocks = true; // !!(siteSettings.snapblocks_enabled)
   });
 
   helper.registerPlugin((md) => {

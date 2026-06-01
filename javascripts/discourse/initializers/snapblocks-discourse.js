@@ -3,21 +3,21 @@ import {
   addBlockDecorateCallback,
   addTagDecorateCallback,
 } from "discourse/lib/to-markdown";
-import snapblocks from "discourse/plugins/snapblocks-discourse/lib/snapblocks/snapblocks-es.js";
-import loadTranslations from "discourse/plugins/snapblocks-discourse/lib/snapblocks/translations-all-es.js";
+import snapblocks from "../../lib/snapblocks/snapblocks-es.js";
+import loadTranslations from "../../lib/snapblocks/translations-all-es.js";
 
-function applySnapblocks(element, siteSettings) {
+function applySnapblocks(element, settings) {
   async function renderElement(el) {
-    let style = el.getAttribute("blockStyle") || siteSettings.block_style;
+    let style = el.getAttribute("blockStyle") || settings.block_style;
     snapblocks.renderElement(el, {
-      style: siteSettings.block_style,
-      zebra: siteSettings.zebra_coloring,
-      wrap: siteSettings.block_wrap,
-      showSpaces: siteSettings.show_spaces,
-      santa: siteSettings.santa_hats,
+      style: settings.block_style,
+      zebra: settings.zebra_coloring,
+      wrap: settings.block_wrap,
+      showSpaces: settings.show_spaces,
+      santa: settings.santa_hats,
       scale: style.startsWith("scratch3")
-        ? siteSettings.block_scale * 0.675
-        : siteSettings.block_scale,
+        ? settings.block_scale * 0.675
+        : settings.block_scale,
       elementOptions: true,
       languages: Object.keys(snapblocks.allLanguages),
     });
@@ -34,8 +34,8 @@ function applySnapblocks(element, siteSettings) {
   });
 }
 
-function initializeSnapblocks(api, siteSettings) {
-  api.decorateCookedElement((el) => applySnapblocks(el, siteSettings), {
+function initializeSnapblocks(api, settings) {
+  api.decorateCookedElement((el) => applySnapblocks(el, settings), {
     id: "snapblocks-discourse",
   });
 
@@ -114,14 +114,11 @@ function initializeSnapblocks(api, siteSettings) {
 export default {
   name: "apply-snapblocks",
   initialize(container) {
-    const siteSettings = container.lookup("service:site-settings");
     // console.debug(`snapblocks version: ${snapblocks.version}`);
 
-    if (siteSettings.snapblocks_enabled) {
-      loadTranslations(snapblocks);
-      withPluginApi("1.15.0", (api) => {
-        return initializeSnapblocks(api, siteSettings);
-      });
-    }
+    loadTranslations(snapblocks);
+    withPluginApi("1.15.0", (api) => {
+      return initializeSnapblocks(api, settings);
+    });
   },
 };

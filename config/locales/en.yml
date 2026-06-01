@@ -1,0 +1,20 @@
+en:
+  theme_metadata:
+    description: "Snapblocks plugin for discourse"
+    settings:
+      snapblocks_enabled: 'Enable the snapblocks plugin. If you change this, you must rebake all posts with: "rake posts:rebake".'
+      block_style: "The default block style"
+      zebra_coloring: "Enable zebra coloring"
+      block_wrap: "Wrap long blocks"
+      show_spaces: "Show spaces in inputs"
+      block_scale: "Scale to render blocks"
+      scratchblocks_alias: "Enable [scratchblocks] alias"
+      santa_hats: "Enable holiday Santa Hats"
+    snapblocks_discourse:
+      snapblocks_spoiler: "snapblocks"
+  js:
+    snapblocks_discourse:
+      title: Snapblocks
+      label: Display snap blocks with text.
+    composer:
+      snapblocks_text: snapblocks text
